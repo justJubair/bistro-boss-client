@@ -1,7 +1,10 @@
+import { Outlet } from "react-router-dom";
+
+
 const Root = () => {
     return(
         <div>
-             <p> HELLO I Am Root </p>
+             <Outlet/>
         </div>
     )}
 export default Root;
