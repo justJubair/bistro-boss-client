@@ -1,16 +1,28 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
-    const navLinks = <>
-        <li className="uppercase"><NavLink to="/">Home</NavLink></li>
-        <li className="uppercase"><NavLink to="/ourMenu">our menu</NavLink></li>
-        <li className="uppercase"><NavLink to="/ourShop">our shop</NavLink></li>
-        <li className="uppercase"><NavLink to="/contact">contact us</NavLink></li>
-        <li className="uppercase"><NavLink to="/dashboard">dashboard</NavLink></li>
+  const navLinks = (
+    <>
+      <li className="uppercase">
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li className="uppercase">
+        <NavLink to="/ourMenu">our menu</NavLink>
+      </li>
+      <li className="uppercase">
+        <NavLink to="/ourShop">our shop</NavLink>
+      </li>
+      <li className="uppercase">
+        <NavLink to="/contact">contact us</NavLink>
+      </li>
+      <li className="uppercase">
+        <NavLink to="/dashboard">dashboard</NavLink>
+      </li>
     </>
+  );
   return (
-    <div className="navbar bg-base-100">
-      <div className="navbar-start">
+    <div className="flex text-white fixed z-10 w-full justify-between mx-auto bg-black/50 px-4 py-2">
+      <div className="">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
@@ -32,18 +44,21 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-           {navLinks}
+            {navLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <Link
+          style={{ fontFamily: "Cinzel" }}
+          className=" leading-tight text-lg uppercase font-bold"
+        >
+          bistro boss <br /> <span className="font-medium">restaurant</span>
+        </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-         {navLinks}
-        </ul>
-      </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
+      <div className=" hidden lg:flex">
+        <ul className="menu menu-horizontal ">{navLinks}</ul>
+        <div className="">
+          <a className="btn">Button</a>
+        </div>
       </div>
     </div>
   );
