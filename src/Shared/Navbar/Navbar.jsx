@@ -21,7 +21,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="flex text-white absolute top-0 z-10 w-full justify-between mx-auto bg-black/50 px-6 py-4">
+    <div className="flex text-white items-center absolute top-0 z-10 w-full justify-between mx-auto bg-black/50 px-6 py-4">
       <div className="">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -42,7 +42,7 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-black"
           >
             {navLinks}
           </ul>
@@ -51,7 +51,7 @@ const Navbar = () => {
           style={{ fontFamily: "Cinzel" }}
           className=" leading-tight text-lg uppercase font-bold"
         >
-          bistro boss <br /> <span className="font-medium">restaurant</span>
+          bistro boss  <span className="font-medium">restaurant</span>
         </Link>
       </div>
       <div className=" hidden lg:flex">
