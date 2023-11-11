@@ -6,6 +6,7 @@ import "./styles.css"
 import Rating from "react-rating";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import {FaQuoteLeft } from "react-icons/fa";
+import PropTypes from "prop-types"
 const Slider = ({ reviews }) => {
   return (
     <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
@@ -27,5 +28,9 @@ const Slider = ({ reviews }) => {
     </Swiper>
   );
 };
+
+Slider.propTypes={
+    reviews:PropTypes.object
+}
 export default Slider;
 

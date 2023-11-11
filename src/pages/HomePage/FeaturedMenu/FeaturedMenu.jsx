@@ -14,7 +14,7 @@ const FeaturedMenu = () => {
           src={featuredImg}
           alt="featured recipe"
         />
-        <div className=" text-white">
+        <div className="space-y-2 text-white">
           <p>March 20, 2023</p>
           <p>where can i get some?</p>
           <p>

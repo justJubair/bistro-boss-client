@@ -31,7 +31,7 @@ const SwiperSlider = () => {
       <SwiperSlide>
         <img src={slide1} />
         {/* overlay */}
-        <div className="absolute w-full h-screen top-0 left-0 bg-black/60"></div>
+        <div className="absolute w-full h-full top-0 left-0 bg-black/60"></div>
         <h3
           style={{ fontFamily: "Cinzel" }}
           className="absolute shadow-2xl uppercase text-white left-28 text-xl top-72"
@@ -42,7 +42,7 @@ const SwiperSlider = () => {
       <SwiperSlide>
         <img src={slide2} />
         {/* overlay */}
-        <div className="absolute w-full h-screen top-0 left-0 bg-black/60"></div>
+        <div className="absolute w-full h-full top-0 left-0 bg-black/60"></div>
         <h3
           style={{ fontFamily: "Cinzel" }}
           className="absolute shadow-2xl uppercase text-white left-28 text-xl top-72"
@@ -53,7 +53,7 @@ const SwiperSlider = () => {
       <SwiperSlide>
         <img src={slide3} />
         {/* overlay */}
-        <div className="absolute w-full h-screen top-0 left-0 bg-black/60"></div>
+        <div className="absolute w-full h-full top-0 left-0 bg-black/60"></div>
         <h3
           style={{ fontFamily: "Cinzel" }}
           className="absolute shadow-2xl uppercase text-white left-28 text-xl top-72"
@@ -64,7 +64,7 @@ const SwiperSlider = () => {
       <SwiperSlide>
         <img src={slide4} />
         {/* overlay */}
-        <div className="absolute w-full h-screen top-0 left-0 bg-black/60"></div>
+        <div className="absolute w-full h-full top-0 left-0 bg-black/60"></div>
         <h3
           style={{ fontFamily: "Cinzel" }}
           className="absolute shadow-2xl uppercase text-white left-28 text-xl top-72"
