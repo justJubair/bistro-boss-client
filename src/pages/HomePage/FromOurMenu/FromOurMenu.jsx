@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import SectionTitle from "../../../Shared/SectionTitle/SectionTitle";
 import MenuCard from "./MenuCard";
 
-const OurMenu = () => {
+const FromOurMenu = () => {
     const [menus, setMenus] = useState([])
     useEffect(()=>{
         fetch("menu.json")
@@ -25,4 +25,4 @@ const OurMenu = () => {
             </div>
         </div>
     )}
-export default OurMenu;
+export default FromOurMenu;

@@ -30,7 +30,7 @@ const Slider = ({ reviews }) => {
 };
 
 Slider.propTypes={
-    reviews:PropTypes.object
+    reviews:PropTypes.array,
 }
 export default Slider;
 

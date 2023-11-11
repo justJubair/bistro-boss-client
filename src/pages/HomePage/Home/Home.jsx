@@ -2,7 +2,7 @@ import Navbar from "../../../Shared/Navbar/Navbar";
 import Banner from "../Banner/Banner";
 import FeaturedMenu from "../FeaturedMenu/FeaturedMenu";
 import OrderOnline from "../OrderOnline/OrderOnline";
-import OurMenu from "../OurMenu/OurMenu";
+import FromOurMenu from "../FromOurMenu/FromOurMenu";
 import Testimonials from "../Testimonials/Testimonials";
 
 
@@ -14,7 +14,7 @@ const Home = () => {
             <Navbar/>
              <Banner/>
              <OrderOnline/>
-             <OurMenu/>
+             <FromOurMenu/>
              <FeaturedMenu/>
              <Testimonials/>
         </div>

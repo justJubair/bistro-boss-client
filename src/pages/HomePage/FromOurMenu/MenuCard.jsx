@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 const MenuCard = ({menu}) => {
     return(
         <div className="flex gap-4">
@@ -9,4 +10,7 @@ const MenuCard = ({menu}) => {
             <p className="text-[#D99904]">${menu.price}</p>
         </div>
     )}
+MenuCard.propTypes = {
+    menu:PropTypes.object,
+}    
 export default MenuCard;

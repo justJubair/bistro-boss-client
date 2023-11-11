@@ -9,7 +9,7 @@ const Navbar = () => {
       <li className="uppercase">
         <NavLink to="/ourMenu">our menu</NavLink>
       </li>
-      <li className="uppercase">
+      <li className="uppercase"> 
         <NavLink to="/ourShop">our shop</NavLink>
       </li>
       <li className="uppercase">
