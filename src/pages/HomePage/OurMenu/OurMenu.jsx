@@ -15,7 +15,7 @@ const OurMenu = () => {
     return(
         <div className="mb-16">
             <SectionTitle subHeading="check it out" heading="from our menu"/>
-            <div className="max-w-screen-xl mx-auto grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div className="max-w-screen-xl px-4 mx-auto grid grid-cols-1 gap-4 md:grid-cols-2">
                 {
                     menus?.map(menu=> <MenuCard key={menu._id} menu={menu}/>)
                 }
