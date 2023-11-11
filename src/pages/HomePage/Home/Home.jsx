@@ -1,5 +1,4 @@
 import MenuTemplate from "../../../Shared/MenuTemplate/MenuTemplate";
-import Navbar from "../../../Shared/Navbar/Navbar";
 import useMenus from "../../../hooks/useMenus";
 import Banner from "../Banner/Banner";
 import FeaturedMenu from "../FeaturedMenu/FeaturedMenu";
@@ -15,7 +14,6 @@ const Home = () => {
     const popularMenu = menus.filter(menu=> menu.category === "popular")
     return(
         <div>
-            <Navbar/>
              <Banner/>
              <OrderOnline/>
              {/* <FromOurMenu/> */}
