@@ -26,7 +26,7 @@ const SwiperSlider = () => {
       }}
       pagination={true}
       modules={[EffectCoverflow, Pagination]}
-      className="mySwiper mb-10"
+      className="mySwiper my-10"
     >
       <SwiperSlide>
         <img src={slide1} />

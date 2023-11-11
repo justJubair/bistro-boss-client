@@ -8,7 +8,7 @@ const FeaturedMenu = () => {
         subHeading="check it out"
         heading="from our menu"
       />
-      <div className="flex flex-col items-center gap-10 md:flex-row">
+      <div className="flex flex-col mt-10 items-center gap-10 md:flex-row">
         <img
           className="w-full md:w-[350px]  lg:w-[500px]"
           src={featuredImg}
