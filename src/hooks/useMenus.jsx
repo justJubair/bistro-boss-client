@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react"
+import useAxios from "./useAxios"
 
 const useMenus = ()=>{
+    const axios = useAxios()
     const [menus, setMenus] = useState([])
     useEffect(()=>{
-        fetch("menu.json")
-        .then(res=> res.json())
+    axios.get("/menus")
         .then(data =>{
-            setMenus(data)
+            setMenus(data.data)
         })
-    },[])
+    },[axios])
     return menus
+   
 }
 
 export default useMenus
