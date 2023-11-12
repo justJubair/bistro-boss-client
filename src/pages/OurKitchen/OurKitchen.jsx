@@ -17,7 +17,6 @@ const OurKitchen = () => {
       setMenus(data.data);
     });
   }, [axios, category]);
-  console.log(menus);
   const handleCategory = (e) => {
     const selectedCategory = e.target.textContent;
     if (selectedCategory === "Salads") {
@@ -41,7 +40,8 @@ const OurKitchen = () => {
         height="600px"
       />
 
-      <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+     <Container>
+     <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <TabList onClick={handleCategory} className="text-center my-10">
           <Tab>Salads</Tab>
           <Tab>Pizzas</Tab>
@@ -54,16 +54,17 @@ const OurKitchen = () => {
           .fill(0)
           .map((item, idx) => (
             <TabPanel key={idx}>
-            <Container>
+        
             <div className="grid gap-4  grid-cols-1 md:gap-6 md:grid-cols-2 lg:grid-cols-3">
              {menus?.map((menu) => (
                 <FoodCard key={menu._id} menu={menu} />
               ))}
              </div>
-            </Container>
+           
             </TabPanel>
           ))}
       </Tabs>
+     </Container>
     </div>
   );
 };

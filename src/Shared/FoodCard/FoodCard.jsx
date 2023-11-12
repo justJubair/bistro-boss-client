@@ -1,7 +1,9 @@
+import PropTypes from "prop-types"
 const FoodCard = ({menu}) => {
     return(
-        <div className="card card-compact w-96 bg-base-100 shadow-xl">
-        <figure><img src={menu.image} alt="Shoes" /></figure>
+        <div className="card card-compact  bg-base-100 shadow-xl">
+        <figure><img src={menu.image} alt="Shoes" />
+        <p className="absolute top-2 right-5 bg-black text-white px-4 py-2 rounded">${menu.price}</p></figure>
         <div className="card-body text-center">
           <h2 className="text-xl font-bold">{menu.name}</h2>
           <p>{menu.recipe}</p>
@@ -13,4 +15,8 @@ const FoodCard = ({menu}) => {
         </div>
       </div>
     )}
+
+FoodCard.propTypes={
+    menu:PropTypes.object,
+}    
 export default FoodCard;
