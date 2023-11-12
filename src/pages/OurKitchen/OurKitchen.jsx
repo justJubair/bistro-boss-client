@@ -6,9 +6,13 @@ import "react-tabs/style/react-tabs.css";
 import useAxios from "../../hooks/useAxios";
 import FoodCard from "../../Shared/FoodCard/FoodCard";
 import Container from "../../Shared/Container/Container";
+import { useParams } from "react-router-dom";
 const OurKitchen = () => {
   const axios = useAxios();
-  const [tabIndex, setTabIndex] = useState(0);
+  const categories = ['salad', 'pizza', 'soup', 'dessert', 'drinks']
+  const {selectedCategory} = useParams()
+  const initialIndex = categories.indexOf(selectedCategory)
+  const [tabIndex, setTabIndex] = useState(initialIndex);
   const [category, setCategory] = useState("salad");
   const [menus, setMenus] = useState([]);
 

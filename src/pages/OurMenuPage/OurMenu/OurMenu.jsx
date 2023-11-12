@@ -35,28 +35,28 @@ const OurMenu = () => {
         title="desserts"
         subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
       />
-      <MenuTemplate menus={desserts} marginTop="mt-16" />
+      <MenuTemplate menus={desserts} title="dessert" marginTop="mt-16" />
       {/* pizza menus */}
       <CoverPage
         img={pizzaImg}
         title="pizza"
         subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
       />
-      <MenuTemplate menus={pizzas} marginTop="mt-16" />
+      <MenuTemplate menus={pizzas} title="pizza" marginTop="mt-16" />
       {/* sald */}
       <CoverPage
         img={saladImg}
         title="salads"
         subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
       />
-      <MenuTemplate menus={salads} />
+      <MenuTemplate menus={salads} title="salad" marginTop="mt-16"/>
       {/* soup */}
       <CoverPage
         img={soupImg}
         title="soups"
         subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
       />
-      <MenuTemplate menus={soups} marginTop="mt-16" />
+      <MenuTemplate menus={soups} title="soup" marginTop="mt-16" />
     </div>
   );
 };

@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         element: <OurMenu/>
       },
       {
-        path: "/ourKitchen",
+        path: "/ourKitchen/:selectedCategory",
         element: <OurKitchen/>
       }
     ],
