@@ -1,11 +1,13 @@
-import MenuTemplate from "../../../Shared/MenuTemplate/MenuTemplate";
-import Banner from "../../../components/Banner/Banner";
-import FeaturedMenu from "../../../components/FeaturedMenu/FeaturedMenu";
-import useMenus from "../../../hooks/useMenus";
+import MenuTemplate from "../../Shared/MenuTemplate/MenuTemplate";
+import Banner from "../../components/Banner/Banner";
+import FeaturedMenu from "../../components/FeaturedMenu/FeaturedMenu";
+import OrderOnline from "../../components/OrderOnline/OrderOnline";
+import Testimonials from "../../components/Testimonials/Testimonials";
+import useMenus from "../../hooks/useMenus";
 
 
-import OrderOnline from "../OrderOnline/OrderOnline";
-import Testimonials from "../Testimonials/Testimonials";
+
+
 
 
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import SectionTitle from "../../../Shared/SectionTitle/SectionTitle";
+
 import Slider from "./Slider/Slider";
+import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 
 const Testimonials = () => {
     const [reviews, setReviews] = useState([])

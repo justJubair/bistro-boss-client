@@ -1,4 +1,5 @@
-import SectionTitle from "../../../Shared/SectionTitle/SectionTitle";
+
+import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import SwiperSlider from "./SwiperSlider/SwiperSlider";
 
 
