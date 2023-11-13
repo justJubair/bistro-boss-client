@@ -7,12 +7,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAOIeHqElDat5Az3G2l1Lw-dqZYQdgFfAM",
-  authDomain: "bistro-boss-client-8780a.firebaseapp.com",
-  projectId: "bistro-boss-client-8780a",
-  storageBucket: "bistro-boss-client-8780a.appspot.com",
-  messagingSenderId: "102993050061",
-  appId: "1:102993050061:web:b7449eb85bc0d879d92c84"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase
