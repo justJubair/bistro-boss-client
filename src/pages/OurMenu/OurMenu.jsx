@@ -1,11 +1,11 @@
-import CoverPage from "../../../Shared/CoverPage/CoverPage";
-import MenuTemplate from "../../../Shared/MenuTemplate/MenuTemplate";
-import useMenus from "../../../hooks/useMenus";
-import ourMenuImg from "../../../assets/menu/banner3.jpg";
-import dessertImg from "../../../assets/menu/dessert-bg.jpeg";
-import pizzaImg from "../../../assets/menu/pizza-bg.jpg";
-import saladImg from "../../../assets/menu/salad-bg.jpg";
-import soupImg from "../../../assets/menu/soup-bg.jpg";
+import CoverPage from "../../Shared/CoverPage/CoverPage";
+import MenuTemplate from "../../Shared/MenuTemplate/MenuTemplate";
+import useMenus from "../../hooks/useMenus";
+import ourMenuImg from "../../assets/menu/banner3.jpg"
+import dessertImg from "../../assets/menu/dessert-bg.jpeg";
+import pizzaImg from "../../assets/menu/pizza-bg.jpg";
+import saladImg from "../../assets/menu/salad-bg.jpg";
+import soupImg from "../../assets/menu/soup-bg.jpg";
 const OurMenu = () => {
   const menus = useMenus();
   const todaysOffers = menus.filter((menu) => menu.category === "offered");

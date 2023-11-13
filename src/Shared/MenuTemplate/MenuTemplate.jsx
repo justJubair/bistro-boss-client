@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import MenuCard from "../../pages/HomePage/FromOurMenu/MenuCard";
+import MenuCard from "../../components/MenuCard/MenuCard";
 import Container from "../Container/Container";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import PropTypes from "prop-types"

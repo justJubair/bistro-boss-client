@@ -1,5 +1,5 @@
-import SectionTitle from "../../../Shared/SectionTitle/SectionTitle";
-import featuredImg from "../../../assets/home/featured.jpg";
+import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
+import featuredImg from "../../assets/home/featured.jpg";
 const FeaturedMenu = () => {
   return (
     <div className="px-4 lg:px-28 pt-4  bg-black/60 bg-blend-overlay bg-center h-[750px] md:h-[500px] lg:h-screen bg-fixed bg-cover bg-[url('https://i.ibb.co/RjSkkx8/featured.jpg')]">

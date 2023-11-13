@@ -1,7 +1,9 @@
 import MenuTemplate from "../../../Shared/MenuTemplate/MenuTemplate";
+import Banner from "../../../components/Banner/Banner";
+import FeaturedMenu from "../../../components/FeaturedMenu/FeaturedMenu";
 import useMenus from "../../../hooks/useMenus";
-import Banner from "../Banner/Banner";
-import FeaturedMenu from "../FeaturedMenu/FeaturedMenu";
+
+
 import OrderOnline from "../OrderOnline/OrderOnline";
 import Testimonials from "../Testimonials/Testimonials";
 
