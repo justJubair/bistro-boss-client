@@ -1,10 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 const Login = () => {
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true)
   useEffect(()=>{
     loadCaptchaEnginge(6)
   },[])
+
+  const handleCaptcha = (e)=>{
+    const userCaptcha = e.target.value
+    if(validateCaptcha(userCaptcha)){
+     
+      setIsButtonDisabled(false)
+    } else {
+    
+      setIsButtonDisabled(true)
+    }
+  }
     return(
         <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col lg:flex-row">
@@ -18,21 +30,21 @@ const Login = () => {
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" placeholder="email" className="input input-bordered" required />
+          <input type="email" placeholder="email" name="email" className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" placeholder="password" className="input input-bordered" required />
+          <input type="password" name="password" placeholder="password" className="input input-bordered" required />
         
         </div>
         <div className="form-control mt-4">
         <LoadCanvasTemplate/>
-        <input name="captcha" className="input input-bordered" type="text" placeholder="type the captcha above" />
+        <input onBlur={handleCaptcha} name="captcha" className="input input-bordered" type="text" placeholder="type the captcha above" />
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
+          <button disabled={isButtonDisabled} className="btn btn-primary">Login</button>
         </div>
       </form>
       <div className="flex items-center justify-between px-4 pb-2">
