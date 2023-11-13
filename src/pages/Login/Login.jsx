@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 const Login = () => {
+  useEffect(()=>{
+    loadCaptchaEnginge(6)
+  },[])
     return(
         <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col lg:flex-row">
@@ -21,9 +25,11 @@ const Login = () => {
             <span className="label-text">Password</span>
           </label>
           <input type="password" placeholder="password" className="input input-bordered" required />
-          <label className="label">
-            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-          </label>
+        
+        </div>
+        <div className="form-control mt-4">
+        <LoadCanvasTemplate/>
+        <input name="captcha" className="input input-bordered" type="text" placeholder="type the captcha above" />
         </div>
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>
