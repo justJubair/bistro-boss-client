@@ -28,6 +28,7 @@ const OurMenu = () => {
         menus={todaysOffers}
         heading="today's offer"
         subHeading="Don't miss"
+        title="salad"
       />
       {/* dessers menus */}
       <CoverPage
