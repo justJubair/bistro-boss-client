@@ -57,7 +57,7 @@ const Navbar = () => {
       <div className=" hidden lg:flex">
         <ul className="menu menu-horizontal ">{navLinks}</ul>
         <Link to="/login" className="">
-          <a className="btn">Login</a>
+          Login
         </Link>
       </div>
     </div>

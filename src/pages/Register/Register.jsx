@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 const Register = () => {
+  const navigate = useNavigate()
+  const {registerUser, updateUser} = useAuth()
   const [isButtonDisabled, setIsButtonDisabled] = useState(true)
   const {
     register,
@@ -10,7 +14,27 @@ const Register = () => {
     formState: { errors },
   } = useForm()
 
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = (data) => {
+    const {name, email, photo, password} = data
+    registerUser(email, password)
+    .then(result =>{
+      if(result.user){
+        
+        updateUser(name, photo)
+        .then(()=>{
+          toast.success("User created successfully")
+          navigate("/")
+        })
+        .catch(error=>{
+          console.log(error)
+        })
+      }
+     
+    })
+    .catch(error=>{
+      console.log(error)
+    })
+  }
   useEffect(()=>{
     loadCaptchaEnginge(6)
   },[])
