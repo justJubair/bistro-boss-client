@@ -1,11 +1,34 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form"
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 const Login = () => {
+  const {loginUser} = useAuth()
   const [isButtonDisabled, setIsButtonDisabled] = useState(true)
+  const navigate = useNavigate()
   useEffect(()=>{
     loadCaptchaEnginge(6)
   },[])
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = (data)=>{
+    const {email, password} = data;
+    loginUser(email, password)
+    .then(()=>{
+      toast.success("Logged in successfully")
+      navigate("/")
+    })
+    .catch(error=>{
+      toast.error(error.message)
+    })
+  }
 
   const handleCaptcha = (e)=>{
     const userCaptcha = e.target.value
@@ -25,19 +48,20 @@ const Login = () => {
       <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
     </div>
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <form className="card-body">
+      <form onSubmit={handleSubmit(onSubmit)} className="card-body">
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" placeholder="email" name="email" className="input input-bordered" required />
+          <input type="email" placeholder="email" {...register("email", {required:true})} className="input input-bordered"  />
+          {errors.email && <span className="mt-2 font-medium text-red-600">Email field is required</span>}
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" name="password" placeholder="password" className="input input-bordered" required />
-        
+          <input type="password" {...register("password", {required:true})} placeholder="password" className="input input-bordered"  />
+          {errors.password && <span className="mt-2 font-medium text-red-600">Password field is required</span>}
         </div>
         <div className="form-control mt-4">
         <LoadCanvasTemplate/>
