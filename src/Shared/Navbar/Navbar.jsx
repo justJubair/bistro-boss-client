@@ -68,10 +68,10 @@ const Navbar = () => {
       <div className=" hidden lg:flex">
        
         <ul className="menu menu-horizontal ">{navLinks}</ul>
-        <button className="btn mx-3">
+        <Link to="/dashboard/cart" className="btn mx-3">
          <AiOutlineShoppingCart size={25}/>
           <div className="badge badge-secondary">{data?.length}</div>
-        </button>
+        </Link>
         {user ? (
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
