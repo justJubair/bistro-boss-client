@@ -1,8 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import useCart from "../../hooks/useCart";
 const Navbar = () => {
   const { user, logOutUser } = useAuth();
+  const [data] = useCart()
   const navLinks = (
     <>
       <li className="uppercase">
@@ -68,7 +70,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal ">{navLinks}</ul>
         <button className="btn mx-3">
          <AiOutlineShoppingCart size={25}/>
-          <div className="badge badge-secondary">+0</div>
+          <div className="badge badge-secondary">{data?.length}</div>
         </button>
         {user ? (
           <div className="dropdown dropdown-end">

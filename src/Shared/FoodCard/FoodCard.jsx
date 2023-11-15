@@ -2,16 +2,20 @@ import PropTypes from "prop-types";
 import useAuth from "../../hooks/useAuth";
 import useAxios from "../../hooks/useAxios";
 import toast from "react-hot-toast";
+import useCart from "../../hooks/useCart";
 const FoodCard = ({ menu }) => {
+  const {name, image, price, recipe} = menu
   const {user} = useAuth()
   const axios = useAxios()
+  const [, refetch] = useCart()
   const userEmail = user?.email
   const handleCartPost = ()=>{
-    const item = {...menu, userEmail}
+    const item = {name, image, price, recipe, userEmail}
     axios.post("/carts", item)
     .then(result=>{
       if(result.data.insertedId){
         toast.success(`${menu?.name} has been added`)
+        refetch()
       }
     })
   }

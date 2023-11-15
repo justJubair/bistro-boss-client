@@ -92,7 +92,8 @@ const Register = () => {
         <input onBlur={handleCaptcha} name="captcha" className="input input-bordered" type="text" placeholder="type the captcha above" />
         </div>
         <div className="form-control mt-6">
-          <button disabled={isButtonDisabled} className="btn btn-primary">Register</button>
+          {/* TODO: make the register button disabled again */}
+          <button disabled={false} className="btn btn-primary">Register</button>
         </div>
             </form>
             <div className="flex items-center justify-between px-4 pb-2">
