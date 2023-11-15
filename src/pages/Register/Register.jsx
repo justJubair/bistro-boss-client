@@ -5,8 +5,10 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-s
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
+import useAxios from "../../hooks/useAxios";
 const Register = () => {
   const navigate = useNavigate()
+  const axios = useAxios()
   const {registerUser, updateUser} = useAuth()
   const [isButtonDisabled, setIsButtonDisabled] = useState(true)
   const {
@@ -23,8 +25,16 @@ const Register = () => {
         
         updateUser(name, photo)
         .then(()=>{
-          toast.success("User created successfully")
-          navigate("/")
+          const userInfo = {name, email}
+          axios.post("/users", userInfo)
+          .then(result=>{
+         
+            if(result.data.insertedId){
+
+              toast.success("User created successfully")
+              navigate("/")
+            }
+          })
         })
         .catch(error=>{
           console.log(error)
