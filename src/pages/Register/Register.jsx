@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 const Register = () => {
   const navigate = useNavigate()
   const {registerUser, updateUser} = useAuth()
@@ -96,6 +97,7 @@ const Register = () => {
           <button disabled={false} className="btn btn-primary">Register</button>
         </div>
             </form>
+            <SocialLogin/>
             <div className="flex items-center justify-between px-4 pb-2">
               <p>Already have an account?</p>
               <Link to="/login" className="btn btn-link">login now</Link>
