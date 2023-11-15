@@ -1,5 +1,6 @@
+import Table from "../../../Shared/Table/Table";
 import useCart from "../../../hooks/useCart";
-import Table from "./Table";
+
 
 const Cart = () => {
   const [data, refetch] = useCart();

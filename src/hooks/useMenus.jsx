@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import useAxios from "./useAxios"
 
+
 const useMenus = ()=>{
     const axios = useAxios()
     const [menus, setMenus] = useState([])
@@ -10,6 +11,7 @@ const useMenus = ()=>{
             setMenus(data.data)
         })
     },[axios])
+    
     return menus
    
 }
