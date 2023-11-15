@@ -68,7 +68,8 @@ const Login = () => {
         <input onBlur={handleCaptcha} name="captcha" className="input input-bordered" type="text" placeholder="type the captcha above" />
         </div>
         <div className="form-control mt-6">
-          <button disabled={isButtonDisabled} className="btn btn-primary">Login</button>
+          {/* TODO: make the button disable */}
+          <button disabled={false} className="btn btn-primary">Login</button>
         </div>
       </form>
       <div className="flex items-center justify-between px-4 pb-2">

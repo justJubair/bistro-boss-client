@@ -1,8 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-
+import { AiOutlineShoppingCart } from "react-icons/ai";
 const Navbar = () => {
-  const {user} = useAuth()
+  const { user, logOutUser } = useAuth();
   const navLinks = (
     <>
       <li className="uppercase">
@@ -11,17 +11,24 @@ const Navbar = () => {
       <li className="uppercase">
         <NavLink to="/ourMenu">our menu</NavLink>
       </li>
-      <li className="uppercase"> 
+      <li className="uppercase">
+        <NavLink to="/dashboard">dashboard</NavLink>
+      </li>
+      <li className="uppercase">
         <NavLink to="/ourKitchen/salad">our kitchen</NavLink>
       </li>
       <li className="uppercase">
         <NavLink to="/contact">contact us</NavLink>
       </li>
-      <li className="uppercase">
-        <NavLink to="/dashboard">dashboard</NavLink>
-      </li>
     </>
   );
+  const handleLogout = () => {
+    logOutUser()
+      .then()
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className=" flex text-white items-center absolute top-0 z-10 w-full justify-between mx-auto bg-black/50 px-6 py-4">
       <div className="">
@@ -53,32 +60,40 @@ const Navbar = () => {
           style={{ fontFamily: "Cinzel" }}
           className=" leading-tight text-lg uppercase font-bold"
         >
-          bistro boss  <span className="font-medium">restaurant</span>
+          bistro boss <span className="font-medium">restaurant</span>
         </Link>
       </div>
       <div className=" hidden lg:flex">
+       
         <ul className="menu menu-horizontal ">{navLinks}</ul>
-        {
-          user ?  <div className="dropdown dropdown-end">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img alt="Tailwind CSS Navbar component" src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-            </div>
-          </label>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-            <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li><a>Settings</a></li>
-            <li><a>Logout</a></li>
-          </ul>
-        </div> :  <Link to="/login" className="btn">Login</Link>
-        }
-         
-        
+        <button className="btn mx-3">
+         <AiOutlineShoppingCart size={25}/>
+          <div className="badge badge-secondary">+0</div>
+        </button>
+        {user ? (
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-black"
+            >
+              <li>
+                <a>{user.displayName}</a>
+              </li>
+              <li onClick={handleLogout}>
+                <a>Logout</a>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Link to="/login" className="btn">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
