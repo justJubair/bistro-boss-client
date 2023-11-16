@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
-import { AiFillDelete, AiOutlineUsergroupAdd } from "react-icons/ai";
+import { AiFillDelete, AiOutlineDelete, AiOutlineUsergroupAdd } from "react-icons/ai";
 import useAxios from "../../hooks/useAxios";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 const Table = ({ data, refetch, allUsers }) => {
   const axios = useAxios();
+  const axiosSecure = useAxiosSecure()
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
       confirmButton: "btn btn-success",
@@ -11,6 +13,7 @@ const Table = ({ data, refetch, allUsers }) => {
     },
     buttonsStyling: false,
   });
+  // DELETE items from cart
   const handleDelete = (_id) => {
     swalWithBootstrapButtons
       .fire({
@@ -46,6 +49,43 @@ const Table = ({ data, refetch, allUsers }) => {
         }
       });
   };
+
+  // DELETE users from database
+  const handleUserDelete = (_id)=>{
+    swalWithBootstrapButtons
+    .fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true,
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/users/${_id}`).then((result) => {
+          if (result.data.deletedCount) {
+            swalWithBootstrapButtons.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+            refetch()
+          }
+        });
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelled",
+          text: "Your imaginary file is safe :)",
+          icon: "error",
+        });
+      }
+    });
+  }
   return (
     <>
       <div className="overflow-x-auto overflow-y-hidden">
@@ -98,12 +138,20 @@ const Table = ({ data, refetch, allUsers }) => {
                 }
                
                 <th>
-                  <button
+                  {
+                    allUsers ?  <button
+                    onClick={() => handleUserDelete(item._id)}
+                    className="btn btn-ghost btn-xs"
+                  >
+                    <AiOutlineDelete className="text-red-600" size={25} />
+                  </button> :  <button
                     onClick={() => handleDelete(item._id)}
                     className="btn btn-ghost btn-xs"
                   >
                     <AiFillDelete className="text-red-600" size={25} />
                   </button>
+                  }
+                 
                 </th>
               </tr>
             ))}
