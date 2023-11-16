@@ -11,13 +11,13 @@ const SocialLogin = () => {
         loginGoogle()
         .then(result=>{
             if(result.user){
-                toast.success("Logged in successfully")
-                navigate("/")
                 const name = result?.user?.displayName
                 const email = result?.user?.email
                 const userInfo = {name, email}
                 axios.post("/users", userInfo)
                 .then()
+                toast.success("Logged in successfully")
+                navigate("/")
             }
 
         })

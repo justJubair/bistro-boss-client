@@ -3,6 +3,7 @@ import { AiFillDelete, AiOutlineDelete, AiOutlineUsergroupAdd } from "react-icon
 import useAxios from "../../hooks/useAxios";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 const Table = ({ data, refetch, allUsers }) => {
   const axios = useAxios();
   const axiosSecure = useAxiosSecure()
@@ -86,6 +87,18 @@ const Table = ({ data, refetch, allUsers }) => {
       }
     });
   }
+
+  // make an user admin 
+  const handleRole = (_id, name)=>{
+    const usersRole = {role: "admin"}
+    axiosSecure.patch(`/users/${_id}`, usersRole)
+    .then(res=>{
+      if(res.data.modifiedCount > 0){
+        toast.success(`${name} is now admin`)
+        refetch()
+      }
+    })
+  }
   return (
     <>
       <div className="overflow-x-auto overflow-y-hidden">
@@ -93,14 +106,14 @@ const Table = ({ data, refetch, allUsers }) => {
           {/* head */}
           <thead className="text-white font-bold text-base bg-[#D1A054]">
               {
-                allUsers ? <>  <tr>
+                allUsers ?   <tr>
                 <th></th>
                
                 <th>Name</th>
                 <th>Email</th>
                 <th>Role</th>
                 <th>Action</th>
-              </tr></> : <>
+              </tr> : 
               <tr>
               <th></th>
               <th>Item Image</th>
@@ -108,7 +121,7 @@ const Table = ({ data, refetch, allUsers }) => {
               <th>Price</th>
               <th>Action</th>
             </tr>
-                </>
+                
               }
            
           </thead>
@@ -134,7 +147,7 @@ const Table = ({ data, refetch, allUsers }) => {
                 allUsers ? <td>{item.email}</td> : <td>{item.name}</td>         
               }
                 {
-                  allUsers ? <td><AiOutlineUsergroupAdd size={25}/></td> :  <td>{item.price}</td>
+                  allUsers ? <td>{item?.role ? "Admin" : <button onClick={()=> handleRole(item._id, item?.name)} className="btn btn-sm"><AiOutlineUsergroupAdd size={25}/></button>}</td> :  <td>{item.price}</td>
                 }
                
                 <th>
