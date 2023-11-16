@@ -11,6 +11,7 @@ import Dashboard from "../layout/Dashboard";
 import Cart from "../pages/Dashboard/Cart/Cart";
 import AddReview from "../pages/Dashboard/AddReview/AddReview";
 import PrivateRoute from "./PrivateRoute";
+import Allusers from "../pages/Dashboard/Allusers/Allusers";
 
 
 const router = createBrowserRouter([
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/addReview",
         element: <AddReview/>
+      },
+      {
+        path: "/dashboard/users",
+        element: <Allusers/>
       }
     ]
  },

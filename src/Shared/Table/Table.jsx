@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import { AiFillDelete } from "react-icons/ai";
+import { AiFillDelete, AiOutlineUsergroupAdd } from "react-icons/ai";
 import useAxios from "../../hooks/useAxios";
 import Swal from "sweetalert2";
-const Table = ({ data, refetch }) => {
+const Table = ({ data, refetch, allUsers }) => {
   const axios = useAxios();
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
@@ -52,31 +52,51 @@ const Table = ({ data, refetch }) => {
         <table className="table">
           {/* head */}
           <thead className="text-white font-bold text-base bg-[#D1A054]">
-            <tr>
+              {
+                allUsers ? <>  <tr>
+                <th></th>
+               
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Action</th>
+              </tr></> : <>
+              <tr>
               <th></th>
               <th>Item Image</th>
               <th>Item Name</th>
               <th>Price</th>
               <th>Action</th>
             </tr>
+                </>
+              }
+           
           </thead>
           <tbody>
             {/* row 1 */}
 
-            {data?.map((item) => (
+            {data?.map((item, idx) => (
               <tr key={item._id}>
                 <th>
                   <label>
-                    <span>1</span>
+                    <span>{idx+1}</span>
                   </label>
                 </th>
-                <td>
+                {
+                  allUsers ? <td>{item.name}</td> :  <td>
                   <div className="mask rounded w-12 h-12">
                     <img src={item.image} alt="Avatar Tailwind CSS Component" />
                   </div>
                 </td>
-                <td>{item.name}</td>
-                <td>{item.price}</td>
+                }
+               
+               {
+                allUsers ? <td>{item.email}</td> : <td>{item.name}</td>         
+              }
+                {
+                  allUsers ? <td><AiOutlineUsergroupAdd size={25}/></td> :  <td>{item.price}</td>
+                }
+               
                 <th>
                   <button
                     onClick={() => handleDelete(item._id)}
