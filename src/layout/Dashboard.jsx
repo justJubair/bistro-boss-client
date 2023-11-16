@@ -11,8 +11,10 @@ import {
   AiOutlineShoppingCart,
   AiOutlineUser,
 } from "react-icons/ai";
+import useAdmin from "../hooks/useAdmin";
 const Dashboard = () => {
-    const isAdmin =true;
+  const [isAdmin] = useAdmin()
+ 
   return (
     <>
       <div className="flex justify-between md:gap-6 lg:gap-10">
