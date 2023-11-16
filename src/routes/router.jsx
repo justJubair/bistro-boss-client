@@ -12,6 +12,7 @@ import Cart from "../pages/Dashboard/Cart/Cart";
 import AddReview from "../pages/Dashboard/AddReview/AddReview";
 import PrivateRoute from "./PrivateRoute";
 import Allusers from "../pages/Dashboard/Allusers/Allusers";
+import AdminRoute from "./AdminRoute";
 
 
 const router = createBrowserRouter([
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/users",
-        element: <Allusers/>
+        element: <AdminRoute><Allusers/></AdminRoute>
       }
     ]
  },
