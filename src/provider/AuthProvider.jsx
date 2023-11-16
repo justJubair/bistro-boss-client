@@ -10,8 +10,10 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import useAxios from "../hooks/useAxios";
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
+  const axios = useAxios()
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -51,13 +53,25 @@ const AuthProvider = ({ children }) => {
   // setup an observer
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userInfo = {email: currentUser?.email}
       setUser(currentUser);
+      if(currentUser){
+          axios.post("/jwt", userInfo)
+          .then(res=>{
+            if(res.data.token){
+              localStorage.setItem("access-token", res.data.token)
+            }
+          })
+      }
+      else{
+        localStorage.removeItem("access-token")
+      }
       setIsLoading(false);
     });
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [axios]);
   const authInfo = {
     user,
     isLoading,
