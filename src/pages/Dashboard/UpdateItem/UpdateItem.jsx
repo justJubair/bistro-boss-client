@@ -14,6 +14,7 @@ const UpdateItem = () => {
     const {
         register,
         handleSubmit,
+        reset,
         // eslint-disable-next-line no-unused-vars
         formState: { errors },
       } = useForm()
@@ -28,12 +29,13 @@ const UpdateItem = () => {
         })
         if(res.data.success){
             const image = res.data.data.display_url
-            const newMenuItem = {name, price, category, recipe, image}
+            const updatedMenuItem = {name, price, category, recipe, image}
             try{
-               const res = await axiosSecure.put(`/menus/${item._id}`, newMenuItem)
+               const res = await axiosSecure.put(`/menus/${item._id}`, updatedMenuItem)
                
                if(res.data.modifiedCount > 0){
                 toast.success(`${name} has been updated`)
+                reset()
                }
                
             }
