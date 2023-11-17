@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import Table from "../../../Shared/Table/Table";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
-const Allusers = () => {
+const AllUsers = () => {
     const axiosSecure = useAxiosSecure()
     const {data, refetch} = useQuery({
         queryKey: ["users"],
@@ -17,4 +17,4 @@ const Allusers = () => {
             <Table data={data} refetch={refetch} allUsers={true}/>
         </div>
     )}
-export default Allusers;
+export default AllUsers;

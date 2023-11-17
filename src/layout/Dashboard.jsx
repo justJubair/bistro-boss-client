@@ -29,7 +29,7 @@ const Dashboard = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink className="flex items-center gap-2">
+              <NavLink to="/dashboard/addItems" className="flex items-center gap-2">
                 <AiFillCalendar size={25} />
               add items
               </NavLink>
