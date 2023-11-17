@@ -18,7 +18,7 @@ const Dashboard = () => {
   return (
     <>
       <div className="flex justify-between md:gap-6 lg:gap-10">
-        <div className="w-64 h-screen bg-[#D1A054] text-black">
+        <div className="w-64 min-h-screen bg-[#D1A054] text-black">
           <ul className="uppercase p-8 font-bold space-y-6">
             {
                 isAdmin ? <>
@@ -124,7 +124,7 @@ const Dashboard = () => {
             </li>
           </ul>
         </div>
-        <div className="max-w-screen-lg mx-auto flex-1">
+        <div className="max-w-screen-lg  mx-auto flex-1">
           <Outlet />
         </div>
       </div>
