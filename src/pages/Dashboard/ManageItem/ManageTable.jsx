@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const ManageTabel = ({ menus, refetch }) => {
@@ -81,7 +82,7 @@ const ManageTabel = ({ menus, refetch }) => {
                 <td>{menu?.name}</td>
                 <td>{menu?.price}</td>
                 <td>
-                  <button className="btn btn-ghost btn-xs">update</button>
+                  <Link to={`/dashboard/updateItem/${menu._id}`} className="btn btn-ghost btn-xs">update</Link>
                 </td>
                 <td>
                   <button onClick={()=> handleDelete(menu._id)} className="btn btn-ghost text-red-500 btn-xs">
