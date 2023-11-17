@@ -9,7 +9,7 @@ import { useLoaderData } from "react-router-dom";
 
 const UpdateItem = () => {
   const item = useLoaderData()
-
+ 
     const axiosSecure = useAxiosSecure()
     const {
         register,
@@ -30,10 +30,10 @@ const UpdateItem = () => {
             const image = res.data.data.display_url
             const newMenuItem = {name, price, category, recipe, image}
             try{
-               const res = await axiosSecure.post("/menus", newMenuItem)
-               console.log(res)
-               if(res.data.insertedId){
-                toast.success(`${name} has been added`)
+               const res = await axiosSecure.put(`/menus/${item._id}`, newMenuItem)
+               
+               if(res.data.modifiedCount > 0){
+                toast.success(`${name} has been updated`)
                }
                
             }
