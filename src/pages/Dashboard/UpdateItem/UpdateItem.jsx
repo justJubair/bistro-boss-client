@@ -14,7 +14,6 @@ const UpdateItem = () => {
     const {
         register,
         handleSubmit,
-        reset,
         // eslint-disable-next-line no-unused-vars
         formState: { errors },
       } = useForm()
@@ -22,6 +21,7 @@ const UpdateItem = () => {
       const onSubmit = async(data) => {
        const {name, price, category, recipe} = data
         const imgageFile = {image: data?.image[0]}
+       
         const res = await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`, imgageFile, {
             headers: {
                 "content-type": "multipart/form-data"
@@ -35,7 +35,7 @@ const UpdateItem = () => {
                
                if(res.data.modifiedCount > 0){
                 toast.success(`${name} has been updated`)
-                reset()
+               
                }
                
             }
@@ -102,7 +102,7 @@ const UpdateItem = () => {
           <textarea className="textarea w-full md:h-28 textarea-bordered" placeholder="recipe..." defaultValue={item?.recipe} {...register("recipe")}></textarea>
         </div>
         <input type="file" className="file-input file-input-bordered w-full max-w-xs"  {...register("image")}/>
-        <button className="btn block btn-primary" type="submit">add item</button>
+        <button className="btn block btn-primary" type="submit">update item</button>
         </form>
       </div>
     </Container>
