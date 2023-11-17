@@ -1,4 +1,5 @@
-const ManageTabel = () => {
+/* eslint-disable react/prop-types */
+const ManageTabel = ({ menus, refetch }) => {
   return (
     <div>
       <div className="overflow-x-auto">
@@ -15,37 +16,31 @@ const ManageTabel = () => {
             </tr>
           </thead>
           <tbody>
-          
-            <tr>
-              <td>
-               1
-              </td>
-              <td>
-               
+            {menus.map((menu, idx) => (
+              <tr key={menu._id}>
+                <td>{idx + 1}</td>
+                <td>
                   <div className="avatar">
                     <div className="rounded w-12 h-12">
                       <img
-                        src="/tailwind-css-component-profile-2@56w.png"
+                        src={menu?.image}
                         alt="Avatar Tailwind CSS Component"
                       />
                     </div>
                   </div>
-                 
-              
-              </td>
-              <td>
-                Zemlak, Daniel and Leannon
-                
-              </td>
-              <td>Purple</td>
-              <td>
-                <button className="btn btn-ghost btn-xs">details</button>
-              </td>
-              <td>
-                <button className="btn btn-ghost btn-xs">details</button>
-              </td>
-            </tr>
-           
+                </td>
+                <td>{menu?.name}</td>
+                <td>{menu?.price}</td>
+                <td>
+                  <button className="btn btn-ghost btn-xs">update</button>
+                </td>
+                <td>
+                  <button className="btn btn-ghost text-red-500 btn-xs">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
