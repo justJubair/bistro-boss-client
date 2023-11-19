@@ -10,9 +10,11 @@ const Payment = () => {
         <>
         <Container>
             <SectionTitle heading="payment" subHeading="Please pay your due"/>
-            <Elements stripe={stripePromise}>
+          <div className="mt-28">
+          <Elements stripe={stripePromise}>
                 <CheckoutForm/>
             </Elements>
+          </div>
             </Container>
         </>
     )}
