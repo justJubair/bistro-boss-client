@@ -6,8 +6,10 @@ import { IoWallet } from "react-icons/io5";
 import { FaUsers } from "react-icons/fa";
 import { SiCodechef } from "react-icons/si";
 import { FaTruck } from "react-icons/fa";
+import usePaymentHistory from "../../../hooks/usePaymentHistory";
 const AdminHome = () => {
     const {user} = useAuth()
+    const [payments] = usePaymentHistory()
     const axiosSecure = useAxiosSecure()
     const {data: stats=[]} = useQuery({
         queryKey: ["stats"],
@@ -16,7 +18,8 @@ const AdminHome = () => {
             return res.data
         }
     })
-   
+    const totalRevenue = payments?.reduce((total, item)=> total+item?.price ,0)
+    
     return(
         <Container>
              <h2 className="text-2xl font-bold my-6"> HELLO, welcome back <span>{user?.displayName}</span> </h2>
@@ -27,7 +30,7 @@ const AdminHome = () => {
                 <div className="flex items-center rounded-lg p-8 text-white bg-gradient-to-r from-cyan-500 to-blue-500">
                     <IoWallet size={50}/>
                     <div className="font-bold ml-4 text-center">
-                        <h3 className="text-2xl">{stats?.users}</h3>
+                        <h3 className="text-2xl">{totalRevenue}</h3>
                         <p className="text-xl">Revenue</p>
                     </div>
                 </div>

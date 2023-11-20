@@ -2,8 +2,10 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import useCart from "../../hooks/useCart";
+import useAdmin from "../../hooks/useAdmin";
 const Navbar = () => {
   const { user, logOutUser } = useAuth();
+  const [isAdmin] = useAdmin()
   const [data] = useCart()
   const navLinks = (
     <>
@@ -13,9 +15,17 @@ const Navbar = () => {
       <li className="uppercase">
         <NavLink to="/ourMenu">our menu</NavLink>
       </li>
-      <li className="uppercase">
-        <NavLink to="/dashboard">dashboard</NavLink>
+      {
+        user &&  <li className="uppercase">
+        <NavLink to="/dashboard/userHome">dashboard</NavLink>
       </li>
+      }
+      {
+        isAdmin &&  <li className="uppercase">
+        <NavLink to="/dashboard/adminHome">dashboard</NavLink>
+      </li>
+      }
+
       <li className="uppercase">
         <NavLink to="/ourKitchen/salad">our kitchen</NavLink>
       </li>

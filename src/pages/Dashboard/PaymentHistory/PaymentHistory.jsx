@@ -1,19 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import SectionTitle from "../../../Shared/SectionTitle/SectionTitle";
+import usePaymentHistory from "../../../hooks/usePaymentHistory";
 
 const PaymentHistory = () => {
   const { user } = useAuth();
-  const axiosSecure = useAxiosSecure();
-  const { data: payments = [] } = useQuery({
-    queryKey: [user?.email, "paymentHistory"],
-    queryFn: async () => {
-      const res = await axiosSecure(`/payments/${user?.email}`);
-      return res.data;
-    },
-  });
-
+  const [payments] = usePaymentHistory(user)
+ 
   return (
     <div>
       <SectionTitle heading="payment history" subHeading="At a Glance" />
