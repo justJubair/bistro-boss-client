@@ -3,17 +3,19 @@ import { useEffect, useState } from "react";
 import useCart from "../../../hooks/useCart";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import toast from "react-hot-toast";
+
 
 
 const CheckoutForm = () => {
     const [error, setError] = useState("")
-    const [transactionId, setTransactionId] = useState("")
+    const [paymentId, setPaymentId] = useState(null)
     const stripe = useStripe()
     const {user} = useAuth()
     const elements = useElements()
     const axiosSecure = useAxiosSecure()
     const [clientSecret, setClientSecret] = useState("")
-    const [cart] = useCart()
+    const [cart, refetch] = useCart()
     const totalPrice = cart?.reduce((total, item)=> total+item.price,0)
     const parseFloatPrice = parseFloat(totalPrice)
     
@@ -46,7 +48,7 @@ const CheckoutForm = () => {
         if(error){
             console.log(error)
             setError(error.message)
-            setTransactionId(null)
+          
         } else{
            
             setError(" ")
@@ -64,27 +66,33 @@ const CheckoutForm = () => {
 
         if(confirmError){
             console.log(confirmError)
-            setTransactionId(null)
+           
         } else{
             if(paymentIntent.status === "succeeded"){
-                setTransactionId(paymentIntent.id)
+                setPaymentId(paymentIntent.id)
             }
          
         }
-
+      
         // save payment details in the database
+    
         const payment = {
             name: user?.name,
             email: user?.email,
-            transactionId,
+            transactionId: paymentIntent?.id || paymentId,
             date: new Date(),
             price: parseFloatPrice,
             cartIds: cart.map(item=> item._id),
             menuIds: cart.map(item=> item.menuId)
         }
+   
 
         const res = await axiosSecure.post("/payments", payment)
-        console.log(res.data)
+        if(res.data.paymentResult){
+            toast.success("Payment is successful")
+            refetch()
+           
+        }
 
 
     }
@@ -110,7 +118,7 @@ const CheckoutForm = () => {
           <button className="btn w-full bg-[#D1A054]" type="submit" disabled={!stripe || !clientSecret}>Pay</button>
           </div>
           <p className="text-red-600 font-semibold">{error}</p>
-          {transactionId ? <p className="text-green-600 font-semibold">Your transaction id: ${transactionId}</p>: ' '}
+          {paymentId ? <p className="text-green-600 font-semibold">Your transaction id: {paymentId}</p>: ' '}
         </form>
     )}
 export default CheckoutForm;
