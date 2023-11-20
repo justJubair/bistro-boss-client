@@ -17,7 +17,7 @@ const usePaymentHistory = (user)=>{
        
       },
     });
-    console.log(payments)
+   
     return [payments]
 }
 
