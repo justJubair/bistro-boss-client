@@ -23,23 +23,25 @@ const PaymentHistory = () => {
           {/* head */}
           <thead>
             <tr>
-              <th></th>
+              <th>#</th>
               <th>Email</th>
+              <th>Transaction Id</th>
               <th>Price</th>
+              <th>Status</th>
               <th>Date</th>
             </tr>
           </thead>
           <tbody>
-            {
-                payments.map((payment, idx)=> <tr key={payment._id}>
-                    <th>{idx+1}</th>
-                    <td>{payment.email}</td>
-                    <td>${payment.price}</td>
-                    <td>{payment.date}</td>
-                  </tr>)
-            }        
-            
-          
+            {payments.map((payment, idx) => (
+              <tr key={payment._id}>
+                <th>{idx + 1}</th>
+                <td>{payment.email}</td>
+                <td>{payment.transactionId}</td>
+                <td>${payment.price}</td>
+                <td>{payment.status}</td>
+                <td>{payment.date}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

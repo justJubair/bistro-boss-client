@@ -83,7 +83,8 @@ const CheckoutForm = () => {
             date: new Date(),
             price: parseFloatPrice,
             cartIds: cart.map(item=> item._id),
-            menuIds: cart.map(item=> item.menuId)
+            menuIds: cart.map(item=> item.menuId),
+            status: "pending"
         }
    
 
