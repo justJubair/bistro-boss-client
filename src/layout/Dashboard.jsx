@@ -23,7 +23,7 @@ const Dashboard = () => {
             {
                 isAdmin ? <>
                  <li>
-              <NavLink className="flex items-center gap-2">
+              <NavLink to="/dashboard/adminHome" className="flex items-center gap-2">
                 <AiFillHome size={25} />
                 admin home
               </NavLink>
@@ -55,7 +55,7 @@ const Dashboard = () => {
             </li>
                 </> : <>
                  <li>
-              <NavLink className="flex items-center gap-2">
+              <NavLink to="/dashboard/userHome" className="flex items-center gap-2">
                 <AiFillHome size={25} />
                 user home
               </NavLink>
