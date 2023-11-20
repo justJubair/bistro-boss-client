@@ -18,10 +18,12 @@ const CheckoutForm = () => {
     const parseFloatPrice = parseFloat(totalPrice)
     
     useEffect(()=>{
+       if(parseFloatPrice>0){
         axiosSecure.post("/create-payment-intent", {price: parseFloatPrice})
         .then(res=>{
             setClientSecret(res.data.clientSecret)
         })
+       }
     },[axiosSecure, parseFloatPrice])
 
 
@@ -70,6 +72,19 @@ const CheckoutForm = () => {
          
         }
 
+        // save payment details in the database
+        const payment = {
+            name: user?.name,
+            email: user?.email,
+            transactionId,
+            date: new Date(),
+            price: parseFloatPrice,
+            cartIds: cart.map(item=> item._id),
+            menuIds: cart.map(item=> item.menuId)
+        }
+
+        const res = await axiosSecure.post("/payments", payment)
+        console.log(res.data)
 
 
     }

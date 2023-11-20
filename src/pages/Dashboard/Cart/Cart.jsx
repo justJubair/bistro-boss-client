@@ -4,7 +4,10 @@ import useCart from "../../../hooks/useCart";
 
 
 const Cart = () => {
-  const [data, refetch] = useCart();
+  const [data, refetch, isLoading] = useCart();
+  if(isLoading){
+    return <p>loading...</p>
+  }
   const totalPrice = data?.reduce((total, item)=> total+item?.price ,0)
 
   return (  

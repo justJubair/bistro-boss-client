@@ -67,7 +67,7 @@ const Dashboard = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink className="flex items-center gap-2">
+              <NavLink to="/dashboard/paymentHistory" className="flex items-center gap-2">
                 <AiFillWallet size={25} />
                 payment history
               </NavLink>

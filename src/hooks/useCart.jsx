@@ -5,7 +5,7 @@ import useAuth from "./useAuth"
 const useCart = ()=>{
     const {user} = useAuth()
     const axios = useAxios()
-    const {data, refetch} = useQuery({
+    const {data, refetch, isLoading} = useQuery({
         queryKey: ["cart", user?.email],
         queryFn: async()=>{
             const res = await axios.get(`/carts?email=${user?.email}`)
@@ -13,7 +13,7 @@ const useCart = ()=>{
         }
     })
   
-    return [data, refetch]
+    return [data, refetch, isLoading]
     
 }
 

@@ -4,13 +4,13 @@ import useAxios from "../../hooks/useAxios";
 import toast from "react-hot-toast";
 import useCart from "../../hooks/useCart";
 const FoodCard = ({ menu }) => {
-  const {name, image, price, recipe} = menu
+  const {name, image, price, recipe, _id} = menu
   const {user} = useAuth()
   const axios = useAxios()
   const [, refetch] = useCart()
   const userEmail = user?.email
   const handleCartPost = ()=>{
-    const item = {name, image, price, recipe, userEmail}
+    const item = {name, image, price, recipe, userEmail, menuId: _id}
     axios.post("/carts", item)
     .then(result=>{
       if(result.data.insertedId){
