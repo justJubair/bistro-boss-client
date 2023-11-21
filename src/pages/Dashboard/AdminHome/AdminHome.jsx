@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useQuery } from "@tanstack/react-query";
 import Container from "../../../Shared/Container/Container";
 import useAuth from "../../../hooks/useAuth";
@@ -6,7 +7,7 @@ import { IoWallet } from "react-icons/io5";
 import { FaUsers } from "react-icons/fa";
 import { SiCodechef } from "react-icons/si";
 import { FaTruck } from "react-icons/fa";
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid,  PieChart, Pie, Sector, Legend } from "recharts";
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid,  PieChart, Pie, Legend } from "recharts";
 const AdminHome = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -48,7 +49,7 @@ const AdminHome = () => {
 
 //   customize shape for bar chart
 const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);

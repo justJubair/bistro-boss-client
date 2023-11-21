@@ -19,4 +19,4 @@ const useCart = ()=>{
 
 export default useCart
 
-// http://localhost:5000/api/v1/carts?email=joey@gmail.com
+// https://bistro-boss-server-ten-gray.vercel.app/api/v1/carts?email=joey@gmail.com

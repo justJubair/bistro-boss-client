@@ -72,7 +72,7 @@ const CheckoutForm = () => {
         } else{
             if(paymentIntent.status === "succeeded"){
                 setPaymentId(paymentIntent.id)
-
+                  // save payment details in the database
                 const payment = {
                     name: user?.name,
                     email: user?.email,
@@ -96,26 +96,9 @@ const CheckoutForm = () => {
          
         }
       
-        // save payment details in the database
+      
     
-        const payment = {
-            name: user?.name,
-            email: user?.email,
-            transactionId: paymentIntent?.id || paymentId,
-            date: new Date(),
-            price: parseFloatPrice,
-            cartIds: cart.map(item=> item._id),
-            menuIds: cart.map(item=> item.menuId),
-            status: "pending"
-        }
-   
-
-        const res = await axiosSecure.post("/payments", payment)
-        if(res.data.paymentResult){
-            toast.success("Payment is successful")
-            refetch()
-           
-        }
+       
 
 
     }
